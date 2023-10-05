@@ -1,4 +1,3 @@
-
 const regExName = /^[a-zA-Z]+(([\s]?[a-zA-Z])?[a-zA-Z]*)*$/;
 const regExEmail = /^(\w+\.)*\w+(@northeastern.edu)$/;         // start with character, no consecutive ., no . before @
 const regExPhone = /^(\(\+?\d{1}\))?\d{3}-?\d{3}-?\d{4}$/;      // (+1)8575401491 (1)8575401491  8575401491 857540-1491
@@ -178,6 +177,7 @@ function submitted(e){
     if(isFirstNameValid && isLastNameValid && isEmailValid && isPhoneNumberValid && isAddressValid1 && isAddressValid2 && isCityValid && isStateValid && isZipcodeValid && isCommentsValid && isRateCommentValid && isRateSelected) {
         addRecord();
         clearField();
+        initFlag();
         alert("Data entered successfully");
     }
     else{
@@ -306,6 +306,24 @@ function showComment(checkbox) {
         isRateCommentValid = true;
     }
     
+}
+
+function initFlag(){
+    isGenderSelected = false;
+    isSourceSelected = false;
+    isRateSelected = false;
+    isFirstNameValid = false;
+    isLastNameValid = false;
+    isEmailValid = false;
+    isPhoneNumberValid = false;
+    isAddressValid1 = false;
+    isAddressValid2 = true;
+    isCityValid = false;
+    isStateValid = false;
+    isZipcodeValid = false;
+    isCommentsValid = false;
+    isRateCommentValid = true;
+    document.myForm.submit.setAttribute('disabled', true);
 }
 
 document.myForm.addEventListener('input', validate);
